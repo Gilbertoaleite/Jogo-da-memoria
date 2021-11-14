@@ -1,0 +1,97 @@
+/**
+ * /* formantando a pagina antes
+ *
+ * @format
+ */
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	background-color: #1c1c1c;
+	/*rgb(188, 248, 228);*/
+}
+
+.memory-game {
+	height: 650px;
+	width: 650px;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	perspective: 1000px; /* perspectiva do usuario no eixo z, quanto maior, maior o efeito da perspectiva */
+}
+
+.card {
+	height: calc(33.333% - 10px);
+	width: calc(25% - 10px);
+	margin: 5px;
+	position: relative;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	transform: scale(1);
+	transform-style: preserve-3d; /* adiciona perspectiva 3d, para que o elemento nao fique achatada no plano */
+	transition: transform 0.9s; /* adiciona efeito de movimento ao flip do card */
+}
+
+.card:active {
+	transform: scale(0.97);
+	transition: transform 0.2s;
+}
+
+.card-front,
+.card-back {
+	width: 110%;
+	height: 110%;
+	padding: 20px;
+	position: absolute;
+	border-radius: 5px;
+	background: #363636;
+	/*rgb(92, 187, 182);*/
+	backface-visibility: hidden; /* todo elemento tem uma frente e um verso (ao contrario, como um espelho.) essa propriedade retira o verso */
+}
+
+.card-front {
+	transform: rotateY(
+		180deg
+	); /* antes, o verso aparecia transparente, pois ambas as imagens tem position absolute, ao girar no eixo Y, elas ficaram com os versos virados */
+}
+
+/* flip card animation */
+
+.card.flip {
+	transform: rotateY(180deg);
+}
+
+.day {
+	background: rgb(188, 248, 228);
+}
+.day .tema button {
+	background: #1c1c1c;
+	color: #ffffff;
+	text-shadow: #ffffff 3px 1px 34px;
+	border: 2px solid #f7f7f7;
+}
+
+.tema button {
+	align-self: flex-end;
+	font-size: 24x;
+	font-weight: 400;
+	padding: 8px 16px;
+	background: #ecf4ff;
+	border-radius: 100px;
+}
+
+#dev,
+a {
+	display: inherit;
+	color: orange;
+	justify-content: flex-end;
+	align-self: flex-end;
+	padding: 1px 5px;
+	text-decoration: none;
+}
